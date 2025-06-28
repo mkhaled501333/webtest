@@ -1,10 +1,27 @@
 # Netlify configuration for React SPA with mobile optimizations
 
 [build]
-  # Build command for Vite
+  # Build command for Vite with TypeScript
   command = "npm run build"
   # Output directory for Vite (usually 'dist')
   publish = "dist"
+  # Ensure we use a compatible Node.js version
+  environment = { NODE_VERSION = "18" }
+
+# Build processing settings
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
 
 # Redirect rules for client-side routing
 [[redirects]]
@@ -85,5 +102,15 @@
 [context.production.environment]
   NODE_ENV = "production"
   VITE_MOBILE_OPTIMIZED = "true"
+  # TypeScript build optimization
+  TS_NODE_SKIP_IGNORE = "true"
   # Add your API URL here
-  # VITE_API_URL = "https://your-api-domain.com" 
+  # VITE_API_URL = "https://your-api-domain.com"
+
+# Development context
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
+
+# Branch-specific builds
+[context.branch-deploy.environment]
+  NODE_ENV = "development" 
