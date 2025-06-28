@@ -1,37 +1,8 @@
-# Mobile-optimized redirects for SPA routing
-
-# Handle mobile app deep links and universal links
-/app/*    /index.html   200
-/share/*  /index.html   200
-/m/*      /index.html   200
-
-# Mobile-specific product sharing URLs
-/product/share/:id  /product/:id  301
-/brand/share/:id    /brand/:id    301
-
-# Handle mobile social media sharing redirects
-/fb/*     /index.html   200
-/tw/*     /index.html   200
-/ig/*     /index.html   200
-
-# PWA and mobile manifest files
-/manifest.json  /manifest.json  200
-/sw.js          /sw.js          200
-
-# Mobile icon redirects (in case icons are requested with different paths)
-/apple-touch-icon.png           /icons/apple-touch-icon.png     200
-/apple-touch-icon-precomposed.png  /icons/apple-touch-icon.png  200
-/favicon.ico                    /icons/favicon.ico              200
-
-# API redirects (uncomment and modify if you have a backend API)
-# /api/*  https://your-api-domain.com/api/:splat  200
-
-# Mobile-optimized asset handling
-/images/*  /static/images/:splat  200
-/fonts/*   /static/fonts/:splat   200
-
-# Main SPA redirect - this should be last
+# Redirect all traffic to index.html for client-side routing
 /*    /index.html   200
+
+# Optional: Redirect API calls to external services (if needed)
+# /api/*  https://your-api-domain.com/api/:splat  200
 
 # Optional: Handle specific file extensions that should not be redirected
 # *.js    /static/js/:splat   200

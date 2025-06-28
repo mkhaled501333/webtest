@@ -14,7 +14,6 @@ import Wishlist from './pages/Wishlist';
 import UserProfile from './pages/UserProfile';
 import CartDrawer from './components/cart/CartDrawer';
 import Layout from './components/layout/Layout';
-import PWAInstallPrompt from './components/ui/PWAInstallPrompt';
 import './App.css';
 
 // Wrapper component that provides the Layout with Outlet
@@ -35,12 +34,10 @@ function App() {
     setProducts(mockProducts);
   }, [setBrands, setProducts]);
 
-  
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-gray-50">
         <CartDrawer />
-        <PWAInstallPrompt />
         <Routes>
           <Route path="/" element={<LayoutWrapper />}>
             <Route index element={<Homepage />} />
