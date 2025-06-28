@@ -226,7 +226,6 @@ export class AROptimizer {
   static getOptimalCameraResolution(): { width: number; height: number } {
     const devicePixelRatio = window.devicePixelRatio || 1;
     const screenWidth = window.screen.width;
-    const screenHeight = window.screen.height;
 
     // Reduce resolution for lower-end devices
     if (devicePixelRatio < 2 || screenWidth < 768) {
@@ -268,7 +267,7 @@ export class DeviceCapabilities {
   static getGPUInfo(): { vendor: string; renderer: string } | null {
     try {
       const canvas = document.createElement('canvas');
-      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      const gl = canvas.getContext('webgl') as WebGLRenderingContext | null;
       
       if (!gl) return null;
 

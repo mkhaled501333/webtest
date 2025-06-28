@@ -1,6 +1,6 @@
-import { Suspense, useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { OrbitControls, Environment, Text, Box, Sphere, Html } from '@react-three/drei';
+import { Suspense, useRef, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Environment, Box, Sphere, Html } from '@react-three/drei';
 import { 
   CubeIcon, 
   ArrowsPointingOutIcon, 
@@ -22,7 +22,7 @@ function ProductModel({ product, isRotating = true }: { product: Product; isRota
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (meshRef.current && isRotating) {
       meshRef.current.rotation.y += delta * 0.5;
     }
@@ -158,7 +158,7 @@ const Product3DViewer = ({ product, onARModeToggle }: Product3DViewerProps) => {
     };
 
     // Simple size recommendation algorithm
-    const recommendations = [];
+    const recommendations: string[] = [];
     
     if (product.category.toLowerCase() === 'tops') {
       if (userProfile.chest < 86) recommendations.push('S');

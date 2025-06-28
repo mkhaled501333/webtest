@@ -5,7 +5,6 @@ import {
   ChartBarIcon, 
   StarIcon,
   CheckCircleIcon,
-  ExclamationTriangleIcon,
   InformationCircleIcon,
   ArrowUpIcon,
   ArrowDownIcon
@@ -54,7 +53,6 @@ const SizeRecommendationSystem = ({
   const [showMeasurementForm, setShowMeasurementForm] = useState(false);
   const [recommendations, setRecommendations] = useState<SizeRecommendation[]>([]);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [selectedBodyPart, setSelectedBodyPart] = useState<string | null>(null);
 
   // Load user measurements from localStorage or user profile
   useEffect(() => {
@@ -103,7 +101,6 @@ const SizeRecommendationSystem = ({
     
     let confidence = 85;
     const reasons: string[] = [];
-    const fitType: SizeRecommendation['fitType'] = 'good';
     
     // Chest analysis
     const chestDiff = Math.abs(measurements.chest - sizeSpecs.chest);

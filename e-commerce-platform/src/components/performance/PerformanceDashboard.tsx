@@ -12,7 +12,7 @@ export const PerformanceDashboard: React.FC<PerformanceDashboardProps> = ({
 }) => {
   const [report, setReport] = useState<PerformanceReport | null>(null);
   const [deviceInfo, setDeviceInfo] = useState<any>(null);
-  const [refreshInterval, setRefreshInterval] = useState<NodeJS.Timeout | null>(null);
+  const [, setRefreshInterval] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (isOpen) {

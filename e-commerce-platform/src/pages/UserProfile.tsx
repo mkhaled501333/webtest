@@ -17,7 +17,7 @@ const UserProfile: React.FC = () => {
     email: '',
     phone: '',
     dateOfBirth: '',
-    gender: '',
+    gender: 'prefer-not-to-say' as 'male' | 'female' | 'other' | 'prefer-not-to-say',
   });
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const UserProfile: React.FC = () => {
         email: user.email,
         phone: user.phone || '',
         dateOfBirth: user.dateOfBirth || '',
-        gender: user.gender || '',
+        gender: user.gender || 'prefer-not-to-say',
       });
       loadWishlists(user.id);
     }
@@ -138,7 +138,7 @@ const UserProfile: React.FC = () => {
                             email: user.email,
                             phone: user.phone || '',
                             dateOfBirth: user.dateOfBirth || '',
-                            gender: user.gender || '',
+                            gender: user.gender || 'prefer-not-to-say',
                           });
                         }}
                       >
@@ -220,7 +220,7 @@ const UserProfile: React.FC = () => {
                     </label>
                     <select
                       value={profileData.gender}
-                      onChange={(e) => setProfileData(prev => ({ ...prev, gender: e.target.value }))}
+                      onChange={(e) => setProfileData(prev => ({ ...prev, gender: e.target.value as 'male' | 'female' | 'other' | 'prefer-not-to-say' }))}
                       disabled={!isEditing}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary disabled:bg-gray-100"
                     >

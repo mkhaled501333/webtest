@@ -32,19 +32,37 @@ const mockProducts: Product[] = [
   {
     id: '1',
     name: 'Sustainable Cotton T-Shirt',
-    brand: 'EcoWear',
+    brand: {
+      id: 'ecowear1',
+      name: 'EcoWear',
+      description: 'Sustainable fashion brand',
+      logo: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=80&h=80&fit=crop',
+      verified: true,
+      productCount: 42
+    },
     price: 29.99,
     originalPrice: 39.99,
     images: ['https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop'],
-    colors: ['White', 'Black', 'Navy'],
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    colors: [
+      { id: 'white1', name: 'White', hex: '#ffffff', available: true },
+      { id: 'black1', name: 'Black', hex: '#000000', available: true },
+      { id: 'navy1', name: 'Navy', hex: '#000080', available: true }
+    ],
+    sizes: [
+      { id: 'xs1', name: 'XS', value: 'xs', available: true, inStock: true },
+      { id: 's1', name: 'S', value: 's', available: true, inStock: true },
+      { id: 'm1', name: 'M', value: 'm', available: true, inStock: true },
+      { id: 'l1', name: 'L', value: 'l', available: true, inStock: true },
+      { id: 'xl1', name: 'XL', value: 'xl', available: true, inStock: true }
+    ],
     category: 'Clothing',
     subcategory: 'Tops',
     description: 'Made from 100% organic cotton',
+    inStock: true,
+    stockQuantity: 100,
+    featured: true,
     rating: 4.5,
     reviewCount: 128,
-    isNew: false,
-    isFeatured: true,
     tags: ['sustainable', 'organic', 'basic'],
   }
 ];
@@ -108,13 +126,16 @@ const wishlistService = {
   async addToWishlist(
     userId: string, 
     productId: string, 
-    wishlistId: string,
+    targetWishlistId: string,
     options?: { color?: string; size?: string; notes?: string }
   ): Promise<WishlistItem> {
     await new Promise(resolve => setTimeout(resolve, 200));
     
-    // In a real app, fetch the product from the API
+    // In a real app, fetch the product from the API and associate with the wishlist
     const product = mockProducts.find(p => p.id === productId) || mockProducts[0];
+    
+    // Use the targetWishlistId to associate the item with the correct wishlist
+    console.log(`Adding product ${productId} to wishlist ${targetWishlistId}`);
     
     return {
       id: Date.now().toString(),

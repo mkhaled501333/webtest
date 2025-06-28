@@ -37,6 +37,7 @@ export interface Size {
   name: string;
   value: string;
   available: boolean;
+  inStock?: boolean;
 }
 
 export interface Color {

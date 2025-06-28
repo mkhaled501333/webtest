@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { Button } from '../Button';
+import Button from '../Button';
 
 describe('Button Component', () => {
   it('renders with default props', () => {
@@ -50,7 +50,7 @@ describe('Button Component', () => {
   });
 
   it('shows loading state', () => {
-    render(<Button loading>Loading</Button>);
+    render(<Button isLoading>Loading</Button>);
     
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();

@@ -2,7 +2,6 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   XMarkIcon, 
   CameraIcon, 
-  ArrowPathIcon, 
   PhotoIcon,
   AdjustmentsHorizontalIcon,
   SparklesIcon,
@@ -41,7 +40,7 @@ const EnhancedARTryOn = ({ product, onClose }: EnhancedARTryOnProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasCamera, setHasCamera] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
-  const [showControls, setShowControls] = useState(true);
+  const [showControls] = useState(true);
   const [capturedImages, setCapturedImages] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
@@ -149,12 +148,12 @@ const EnhancedARTryOn = ({ product, onClose }: EnhancedARTryOnProps) => {
   };
 
   const handleAddToCart = () => {
-    addToCart({
-      ...product,
-      selectedColor,
-      selectedSize: selectedSize.name,
-      quantity: 1
-    });
+    addToCart(
+      product,
+      selectedSize.id,
+      selectedColor.id,
+      1
+    );
   };
 
   const toggleWishlist = () => {
@@ -566,7 +565,7 @@ const EnhancedARTryOn = ({ product, onClose }: EnhancedARTryOnProps) => {
       </div>
 
       {/* Custom CSS for scanning animation */}
-      <style jsx>{`
+      <style>{`
         @keyframes scan {
           0% { top: 0; opacity: 1; }
           50% { opacity: 0.5; }
