@@ -1,0 +1,12 @@
+# Redirect all traffic to index.html for client-side routing
+/*    /index.html   200
+
+# Optional: Redirect API calls to external services (if needed)
+# /api/*  https://your-api-domain.com/api/:splat  200
+
+# Optional: Handle specific file extensions that should not be redirected
+# *.js    /static/js/:splat   200
+# *.css   /static/css/:splat  200
+# *.png   /static/images/:splat  200
+# *.jpg   /static/images/:splat  200
+# *.svg   /static/images/:splat  200 
