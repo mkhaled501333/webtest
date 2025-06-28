@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "npx tsc --noEmit && vite build",
     "build:vite-only": "vite build",
-    "build:check": "npx tsc --noEmit && vite build",
+    "build:check": "tsc --noEmit && vite build",
     "build:netlify": "npm run type-check && vite build",
     "type-check": "npx tsc --noEmit",
     "lint": "eslint .",
