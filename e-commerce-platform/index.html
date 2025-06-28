@@ -2,12 +2,85 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    
+    <!-- Mobile-optimized viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0" />
+    
+    <!-- Mobile web app capabilities -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="StyleHub" />
+    
+    <!-- Theme colors for mobile browsers -->
+    <meta name="theme-color" content="#0284c7" />
+    <meta name="msapplication-navbutton-color" content="#0284c7" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Mobile browser icons -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Local Fashion - E-Commerce Platform</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Mobile SEO -->
+    <meta name="description" content="Discover unique fashion from local brands with AR try-on technology. Shop StyleHub for the latest trends." />
+    <meta name="keywords" content="fashion, local brands, AR try-on, mobile shopping, style, clothing" />
+    <meta name="author" content="StyleHub" />
+    
+    <!-- Mobile social sharing -->
+    <meta property="og:title" content="StyleHub - Local Fashion Platform" />
+    <meta property="og:description" content="Discover unique fashion from local brands with AR try-on technology" />
+    <meta property="og:image" content="/icons/og-image.png" />
+    <meta property="og:url" content="https://your-site.netlify.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="StyleHub" />
+    
+    <!-- Twitter Card for mobile sharing -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="StyleHub - Local Fashion Platform" />
+    <meta name="twitter:description" content="Discover unique fashion from local brands with AR try-on technology" />
+    <meta name="twitter:image" content="/icons/twitter-card.png" />
+    
+    <!-- Performance hints for mobile -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    
+    <!-- Mobile-friendly loading -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="address=no" />
+    
+    <title>StyleHub - Local Fashion Platform</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Mobile PWA installation script -->
+    <script>
+      // Register service worker for mobile PWA
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('SW registered: ', registration);
+            })
+            .catch(registrationError => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+      
+      // Handle mobile app installation prompt
+      let deferredPrompt;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        // Show install button or banner here if needed
+      });
+    </script>
   </body>
 </html>

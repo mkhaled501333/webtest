@@ -1,4 +1,4 @@
-# Netlify configuration for React SPA with client-side routing
+# Netlify configuration for React SPA with mobile optimizations
 
 [build]
   # Build command for Vite
@@ -12,22 +12,78 @@
   to = "/index.html"
   status = 200
 
-# Optional: Security headers
+# Mobile-optimized headers
 [[headers]]
   for = "/*"
   [headers.values]
+    # Security headers
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Mobile viewport and PWA support
+    X-UA-Compatible = "IE=edge"
+    
+    # Performance headers for mobile
+    X-DNS-Prefetch-Control = "on"
+    
+    # Mobile-friendly cache control
+    Cache-Control = "public, max-age=0, must-revalidate"
 
-# Optional: Cache static assets
+# Optimize static assets for mobile
 [[headers]]
-  for = "/static/*"
+  for = "/static/js/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    # Enable compression for mobile
+    Content-Encoding = "gzip"
 
-# Optional: Environment variables (if needed)
-# [context.production.environment]
-#   NODE_ENV = "production"
-#   REACT_APP_API_URL = "https://your-api-domain.com" 
+[[headers]]
+  for = "/static/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Encoding = "gzip"
+
+# Mobile image optimization
+[[headers]]
+  for = "/static/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    # Mobile-friendly image headers
+    Vary = "Accept"
+
+# Service Worker for PWA (mobile app-like experience)
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Service-Worker-Allowed = "/"
+
+# Manifest file for mobile PWA
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=86400"
+
+# Mobile-specific redirects for deep linking
+[[redirects]]
+  from = "/app/*"
+  to = "/index.html"
+  status = 200
+  # Mobile app deep link handling
+  conditions = {User-Agent = "*Mobile*"}
+
+# Handle mobile share URLs
+[[redirects]]
+  from = "/share/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables for mobile optimization
+[context.production.environment]
+  NODE_ENV = "production"
+  VITE_MOBILE_OPTIMIZED = "true"
+  # Add your API URL here
+  # VITE_API_URL = "https://your-api-domain.com" 
