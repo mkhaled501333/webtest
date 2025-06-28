@@ -2,7 +2,7 @@
 
 [build]
   # Build command for Vite with TypeScript
-  command = "npm run build"
+  command = "npm ci && npm run build"
   # Output directory for Vite (usually 'dist')
   publish = "dist"
   # Ensure we use a compatible Node.js version
