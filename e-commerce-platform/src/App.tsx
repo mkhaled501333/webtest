@@ -35,6 +35,7 @@ function App() {
     setProducts(mockProducts);
   }, [setBrands, setProducts]);
 
+  
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-gray-50">
