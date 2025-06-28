@@ -43,23 +43,57 @@
 }
 
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  
   body {
     font-family: 'Inter', ui-sans-serif, system-ui;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* Improve touch targets on mobile */
+  @media (max-width: 768px) {
+    button, a, input, select, textarea {
+      min-height: 44px;
+    }
   }
 }
 
 @layer components {
   .btn-primary {
     @apply bg-primary-600 text-white font-medium py-2 px-4 rounded-md transition-colors hover:bg-primary-700;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .btn-secondary {
     @apply bg-gray-100 text-gray-900 font-medium py-2 px-4 rounded-md transition-colors hover:bg-gray-200;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .btn-outline {
     @apply border border-primary-600 text-primary-600 font-medium py-2 px-4 rounded-md transition-all hover:bg-primary-600 hover:text-white;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .card {
@@ -68,5 +102,66 @@
 
   .input-field {
     @apply w-full py-2 px-3 border border-gray-300 rounded-md outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+    min-height: 44px;
+  }
+  
+  /* Mobile-optimized container */
+  .mobile-container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Better mobile spacing */
+  .mobile-section {
+    @apply py-8 sm:py-12 lg:py-16;
+  }
+  
+  /* Mobile-friendly text sizes */
+  .mobile-title {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-bold;
+  }
+  
+  .mobile-subtitle {
+    @apply text-base sm:text-lg lg:text-xl;
+  }
+  
+  /* Responsive grid utilities */
+  .mobile-grid-1 {
+    @apply grid grid-cols-1 gap-4 sm:gap-6;
+  }
+  
+  .mobile-grid-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6;
+  }
+  
+  .mobile-grid-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  }
+  
+  .mobile-grid-4 {
+    @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6;
+  }
+}
+
+/* Mobile-specific utilities */
+@layer utilities {
+  .safe-area-inset {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  /* Hide scrollbars on mobile while keeping functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }

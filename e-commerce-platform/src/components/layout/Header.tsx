@@ -107,45 +107,45 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 py-4">
+          <div className="md:hidden border-t border-gray-200 py-4 bg-white">
             {/* Mobile Search */}
-            <div className="mb-4">
+            <div className="mb-4 px-4">
               <div className="relative">
                 <input
                   type="text"
                   placeholder="Search for brands, products..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  className="w-full pl-10 pr-4 py-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 min-h-touch"
                 />
-                <MagnifyingGlassIcon className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+                <MagnifyingGlassIcon className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
               </div>
             </div>
 
             {/* Mobile Navigation Links */}
-            <nav className="space-y-2">
+            <nav className="space-y-1 px-4">
               <Link 
                 to="/brands" 
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition-colors min-h-touch"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Brands
               </Link>
               <Link 
                 to="/categories" 
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition-colors min-h-touch"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Categories
               </Link>
               <Link 
                 to="/ar-try-on" 
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition-colors min-h-touch"
                 onClick={() => setIsMenuOpen(false)}
               >
                 AR Try-On
               </Link>
               <Link 
                 to="/wishlist" 
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition-colors min-h-touch"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Wishlist
@@ -156,7 +156,7 @@ const Header = () => {
                   setIsCartOpen(true);
                   setIsMenuOpen(false);
                 }}
-                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
+                className="flex items-center w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition-colors min-h-touch"
               >
                 Cart ({cartItemsCount})
               </button>

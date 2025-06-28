@@ -183,20 +183,20 @@ const FeaturedBrandsSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-12 sm:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             Featured Local Brands
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
             Discover unique fashion from carefully curated local designers and emerging brands
           </p>
         </div>
 
         {/* Brands Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
           {featuredBrands.map((brand) => (
             <Card 
               key={brand.id}
@@ -205,7 +205,7 @@ const FeaturedBrandsSection = () => {
               onClick={() => handleCardClick(brand.id)}
             >
               {/* Brand Cover Image */}
-              <div className="relative h-48 overflow-hidden rounded-t-lg bg-gray-100">
+              <div className="relative h-40 sm:h-48 overflow-hidden rounded-t-lg bg-gray-100">
                 <img
                   src={brand.coverImage}
                   alt={`${brand.name} cover`}
@@ -216,7 +216,7 @@ const FeaturedBrandsSection = () => {
                 {brand.verified && (
                   <Badge 
                     variant="success" 
-                    className="absolute top-3 right-3"
+                    className="absolute top-2 sm:top-3 right-2 sm:right-3 text-xs"
                   >
                     Verified
                   </Badge>
@@ -224,22 +224,22 @@ const FeaturedBrandsSection = () => {
               </div>
 
               {/* Brand Info */}
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 <div className="flex items-center mb-3">
                   <div className="relative">
                     <img
                       src={brand.logo}
                       alt={`${brand.name} logo`}
-                      className="w-12 h-12 rounded-full object-cover mr-3"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover mr-3"
                       onError={handleLogoError}
                       loading="lazy"
                     />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 truncate">
                       {brand.name}
                     </h3>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-xs sm:text-sm text-gray-500">
                       Local Brand
                     </p>
                   </div>
@@ -250,13 +250,13 @@ const FeaturedBrandsSection = () => {
                 </p>
 
                 <div className="flex justify-between items-center">
-                  <div className="text-sm text-gray-500">
+                  <div className="text-xs sm:text-sm text-gray-500">
                     {brand.productCount} products
                   </div>
                   <Button
                     variant="primary"
                     size="sm"
-                    className="group-hover:bg-primary-700"
+                    className="group-hover:bg-primary-700 text-xs sm:text-sm px-3 sm:px-4"
                     onClick={(e) => handleShopNowClick(e, brand.id)}
                   >
                     Shop Now
@@ -273,7 +273,7 @@ const FeaturedBrandsSection = () => {
             <Button
               variant="outline"
               size="lg"
-              className="px-8"
+              className="px-6 sm:px-8 w-full sm:w-auto"
             >
               View All Brands
             </Button>
